@@ -7,7 +7,7 @@ pipeline {
     // We should really use some specific agent, we are getting crashes on some agents without Node or Docker!
     agent {
         kubernetes {
-            inheritFrom: 'Node16Alpine'
+            inheritFrom 'Node16Alpine'
             defaultContainer 'node16'
             yamlMergeStrategy merge()
             yaml '''
