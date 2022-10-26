@@ -89,7 +89,7 @@ pipeline {
 }
 
 def getImageTags() {
-    def commitTag = sanitizeImageTag("${env.GIT_BRANCH-${env.GIT_COMMIT}}")
+    def commitTag = sanitizeImageTag("${env.GIT_BRANCH}-${env.GIT_COMMIT}}")
     def tags = [commitTag]
 
     if (isMaster()) {
