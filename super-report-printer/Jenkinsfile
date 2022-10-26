@@ -6,7 +6,6 @@ library 'jenkins-tutorial-shared-lib'
 @Field String PROJECT_DIR = 'super-report-printer'
 
 pipeline {
-    // We should really use some specific agent, we are getting crashes on some agents without Node or Docker!
     agent {
         kubernetes {
             inheritFrom 'Node16Alpine'
@@ -76,10 +75,10 @@ pipeline {
             steps {
                 script {
                     kaniko.buildNoPush(
-                        imageName: 'uper-report-printer',
+                        imageName: 'super-report-printer',
                         imageTag: getImageTags(),
                         context: PROJECT_DIR,
-                        dockerfile: '/Dockerfile',
+                        dockerfile: './Dockerfile',
                         extraArgs: '--use-new-run --snapshotMode=redo'
                     )
                 }
